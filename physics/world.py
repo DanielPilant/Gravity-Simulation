@@ -9,3 +9,4 @@ class EarthGravity:
 
     def acceleration(self):
         return self.g * PIXELS_PER_METER # in pixels/s^2
+    

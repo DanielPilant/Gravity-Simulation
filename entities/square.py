@@ -8,6 +8,7 @@ class Square:
         self.color = color
         self.mass = mass
         self.vy = 0.0  # vertical velocity
+        self.vx = 0.0  # horizontal velocity
         self.dragging = False
 
     def draw(self, surface):
