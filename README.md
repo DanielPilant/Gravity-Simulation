@@ -3,8 +3,6 @@
 
 # **Gravity Simulation Project (Built Without AI Agents)**
 
-![gravity\_sim\_screenshot](https://github.com/user-attachments/assets/fa3c4496-b36a-42f9-9efd-cfd1a87ef993)
-
 ## **About the Project**
 
 This project is developed **entirely without AI agents**, with the purpose of improving my programming skills and strengthening my computational thinking.
@@ -72,4 +70,7 @@ Basic square objects with size, mass, color, velocity, and screen position.
 * Build UI controls for selecting the planet and physical conditions
 
 ---
+
+![gravity\_sim\_screenshot](https://github.com/user-attachments/assets/fa3c4496-b36a-42f9-9efd-cfd1a87ef993)
+
 
