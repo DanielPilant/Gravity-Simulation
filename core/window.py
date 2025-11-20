@@ -1,7 +1,9 @@
+from numpy import sin
 import pygame
+import sys
 
 from entities.square import Square
-from physics.world import EarthGravity
+from physics.world import EarthGravity, MoonGravity, sunGravity
 from entities.objects import (
     square1,
     square2,
@@ -15,13 +17,20 @@ pygame.init()
 
 # Constants and setup
 FPS = 144
-WIDTH, HEIGHT = 800, 900                    
+WIDTH, HEIGHT = 1000, 900                    
 screen = pygame.display.set_mode((WIDTH, HEIGHT))   
 pygame.display.set_caption("Square Demo")   
 
 # Game variables
 squares = [square1, square2, square3, square4, square5, square6]
-e_gravity = EarthGravity()
+
+g = "earth"  # choose gravity: "earth", "moon", or "sun"
+if g == "sun":
+    gravity = sunGravity()
+elif g == "earth":
+    gravity = EarthGravity()
+else:
+    gravity = MoonGravity()  # default to Moon gravity
 clock = pygame.time.Clock()
 dt = 1/FPS 
 e = 0.7 # coefficient of restitution
@@ -76,14 +85,27 @@ while running:
             square.x = mx - square.size / 2
             square.y = my - square.size / 2
         else:
-            square.vy += e_gravity.acceleration() * dt
+            square.vy += gravity.acceleration() * dt
             square.x += square.vx * dt
             square.y += square.vy * dt
-            print(f"vx: {square.vx}, vy: {square.vy}")
             
             if square.y + square.size >= HEIGHT:
                 square.y = HEIGHT - square.size
-                square.vy = -square.vy * e
+                if abs(square.vy) > 5:
+                    square.vy = -square.vy * e
+                else:
+                    square.vy = 0
+                    if(square.vx != 0):
+                        friction_acc = gravity.stone()
+                        if square.vx > 0:
+                            square.vx -= friction_acc * dt
+                            if square.vx < 0:
+                                square.vx = 0
+                        else:
+                            square.vx += friction_acc * dt
+                            if square.vx > 0:
+                                square.vx = 0
+                    print("friction applied, vx:", square.vx)
                 
             elif square.y < 0:
                 square.y = 0
