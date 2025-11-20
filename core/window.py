@@ -31,9 +31,10 @@ def set_friction(friction_type_choice):
         friction_type = "stone"
     elif friction_type_choice == "oil":
         friction_type = "oil"
+    elif friction_type_choice == "ice":
+        friction_type = "ice"
 
 # Game variables
-  # default to Moon gravity
 clock = pygame.time.Clock()
 dt = 1/FPS 
 e = 0.7 # coefficient of restitution
@@ -99,6 +100,15 @@ select_friction_oil = Button(
     callback=lambda: set_friction("oil")
 )
 
+select_friction_ice = Button(
+    x=220,
+    y=110,
+    w=200,
+    h=40,
+    text="Ice Friction",
+    callback=lambda: set_friction("ice")
+)
+
 # Main game loop
 while running:
     
@@ -125,6 +135,7 @@ while running:
         select_planet_moon.handle_event(event)   
         select_friction_stone.handle_event(event)
         select_friction_oil.handle_event(event)
+        select_friction_ice.handle_event(event)
                 
         if event.type == pygame.QUIT:       
             running = False 
@@ -169,6 +180,8 @@ while running:
                         friction_acc = gravity.stone()
                     elif friction_type == "oil":
                         friction_acc = gravity.oil()
+                    elif friction_type == "ice":
+                        friction_acc = gravity.ice()
                     if square.vx > 0:
                         square.vx -= friction_acc * dt
                         if square.vx < 0:
@@ -200,6 +213,7 @@ while running:
     
     select_friction_stone.draw(screen)
     select_friction_oil.draw(screen)
+    select_friction_ice.draw(screen)
 
     pygame.display.flip()                  
 

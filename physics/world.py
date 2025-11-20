@@ -13,7 +13,10 @@ class FloorFriction:
     
     def oil(self, g):
         return self.friction_acceleration(g)
-   
+    
+    def ice(self, g):
+        return self.friction_acceleration(g)
+    
     
 class EarthGravity:
     def __init__(self, g=9.81):
@@ -30,6 +33,10 @@ class EarthGravity:
     def oil(self): 
         floorFriction = FloorFriction(mu=0.1)
         return floorFriction.oil(self.g)
+    
+    def ice(self):
+        floorFriction = FloorFriction(mu=0.03)
+        return floorFriction.ice(self.g)
         
 class MoonGravity:
     def __init__(self, g=1.62):
@@ -47,6 +54,10 @@ class MoonGravity:
         floorFriction = FloorFriction(mu=0.1)
         return floorFriction.oil(self.g)
     
+    def ice(self):
+        floorFriction = FloorFriction(mu=0.03)
+        return floorFriction.ice(self.g)
+    
     
 class SunGravity:
     def __init__(self, g=274):
@@ -63,3 +74,7 @@ class SunGravity:
     def oil(self): 
         floorFriction = FloorFriction(mu=0.1)
         return floorFriction.oil(self.g)
+    
+    def ice(self):
+        floorFriction = FloorFriction(mu=0.03)
+        return floorFriction.ice(self.g)
