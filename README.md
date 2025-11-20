@@ -71,6 +71,6 @@ Basic square objects with size, mass, color, velocity, and screen position.
 
 ---
 
-![gravity\_sim\_screenshot](https://github.com/user-attachments/assets/fa3c4496-b36a-42f9-9efd-cfd1a87ef993)
+<img width="998" height="931" alt="image" src="https://github.com/user-attachments/assets/30629e00-e8aa-4875-9a3d-a439989c06b2" />
 
 
