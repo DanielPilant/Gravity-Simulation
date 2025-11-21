@@ -38,7 +38,7 @@ def set_friction(friction_type_choice):
 # Game variables
 clock = pygame.time.Clock()
 dt = 1/FPS 
-e = 0.5 # coefficient of restitution
+e = 0.7 # coefficient of restitution
 offset_x = 0
 offset_y = 0
 running = True
@@ -168,7 +168,7 @@ while running:
             square.vy += gravity.acceleration * dt
             square.x += square.vx * dt
             square.y += square.vy * dt
-            print(square.vx)
+            print(square.vy)
 
             if square.y + square.size >= HEIGHT:
                 square.y = HEIGHT - square.size

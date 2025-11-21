@@ -13,4 +13,4 @@ class Square:
 
     def draw(self, surface):
         pygame.draw.rect(surface, self.color,
-                         (self.x, self.y, self.size, self.size))
+            (self.x, self.y, self.size, self.size))

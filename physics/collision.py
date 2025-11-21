@@ -42,11 +42,15 @@ def resolve_collision(a, b, e):
 
         a.vx = ((mass_a * u_a_x + mass_b * u_b_x) - mass_b * (u_a_x - u_b_x)*e)/(mass_a + mass_b) 
         b.vx = ((mass_a * u_a_x + mass_b * u_b_x) + mass_a * (u_a_x - u_b_x)*e)/(mass_a + mass_b)
+        if a.vx < 0.5 and a.vx > -0.5:
+            a.vx = 0
     else:
         if ay_center < by_center:
             a.y -= overlap_y
         else:
-            a.y += overlap_y
+            b.y -= overlap_y
 
         a.vy = ((mass_a * u_a_y + mass_b * u_b_y) - mass_b * (u_a_y - u_b_y)*e)/(mass_a + mass_b) 
         b.vy = ((mass_a * u_a_y + mass_b * u_b_y) + mass_a * (u_a_y - u_b_y)*e)/(mass_a + mass_b)
+        if a.vy < 0.5 and a.vy > -0.5:
+            a.vy = 0
