@@ -15,8 +15,7 @@ class FloorFriction:
         return self.friction_acceleration(g)
     
     def ice(self, g):
-        return self.friction_acceleration(g)
-    
+        return self.friction_acceleration(g)   
     
 class EarthGravity:
     def __init__(self, g=9.81):
@@ -57,7 +56,6 @@ class MoonGravity:
     def ice(self):
         floorFriction = FloorFriction(mu=0.03)
         return floorFriction.ice(self.g)
-    
     
 class SunGravity:
     def __init__(self, g=274):

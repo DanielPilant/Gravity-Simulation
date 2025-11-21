@@ -5,6 +5,7 @@ import sys
 from core.buttons.general_button import Button
 from core.functions.generate_random_objects import generate_random_objects
 from entities.square import Square
+from physics.collision import is_colliding, resolve_collision
 from physics.world import EarthGravity, MoonGravity, SunGravity
 from entities.objects import squares_in_game
 
@@ -37,7 +38,7 @@ def set_friction(friction_type_choice):
 # Game variables
 clock = pygame.time.Clock()
 dt = 1/FPS 
-e = 0.7 # coefficient of restitution
+e = 0.5 # coefficient of restitution
 offset_x = 0
 offset_y = 0
 running = True
@@ -202,7 +203,14 @@ while running:
             elif square.x < 0:
                 square.x = 0
                 square.vx = -square.vx * e
-                  
+    
+    for i in range(len(squares_in_game)):
+        for j in range(i + 1, len(squares_in_game)):
+            a = squares_in_game[i]
+            b = squares_in_game[j]
+            if is_colliding(a, b):
+                resolve_collision(a, b, e)
+             
     # Draw squares
     for square in squares_in_game:
         square.draw(screen)
