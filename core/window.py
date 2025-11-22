@@ -164,6 +164,17 @@ while running:
         if square.dragging:
             square.x = mx - square.size / 2
             square.y = my - square.size / 2
+            if square.y + square.size >= HEIGHT:
+                square.y = HEIGHT - square.size
+                
+            elif square.y < 0:
+                square.y = 0
+            
+            if square.x + square.size >= WIDTH:
+                square.x = WIDTH - square.size
+                
+            elif square.x < 0:
+                square.x = 0
         else:
             square.vy += gravity.acceleration * dt
             square.x += square.vx * dt
